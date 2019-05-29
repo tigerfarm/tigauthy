@@ -13,6 +13,7 @@
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 8000;
+console.log('+ PORT: ' + PORT);
 var app = express();
 
 var request = require('request');
