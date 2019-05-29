@@ -1,7 +1,7 @@
 {
-  "name": "Sample Node-Express Web Server Application",
-  "description": "This application is a sample application.",
-  "repository": "https://github.com/tigerfarm/tigne",
-  "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
-  "keywords": ["node", "express", "heroku", "Twilio"]
+  "name": "Authy SDK Backend",
+  "description": "A sample for the Authy SDK Backend",
+  "repository": "https://github.com/authy/authy-sdk-backend",
+  "logo": "https://www.authy.com/img/logos/authy-2fa.svg",
+  "keywords": ["ruby", "authy", "sdk"]
 }

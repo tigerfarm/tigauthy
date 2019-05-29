@@ -7,16 +7,18 @@
 // To do:
 //  Sample using: setHeaders
 //
-
+// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // $ npm install express --save
 const express = require('express');
-const path = require('path');
-const PORT = process.env.PORT || 8000;
-console.log('+ PORT: ' + PORT);
 var app = express();
 
-var request = require('request');
+// -----------------------------------------------------------------------------
+app.use(express.static('docroot'));
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('HTTP Error 500.');
+});
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -27,6 +29,7 @@ function sayMessage(message) {
     console.log(message);
 }
 
+var request = require('request');
 function requestPost(theUrl, res) {
     sayMessage("+ POST theUrl :" + theUrl + ":");
     sayMessage("+ api_key :" + process.env.AUTHY_API_KEY_TF + ":");
@@ -102,12 +105,10 @@ app.post('/registration', function (req, res) {
     requestPost(theUrl, res);
 });
 
-// -----------------------------------------------------------------------------
-app.use(express.static('docroot'));
-app.use(function (err, req, res, next) {
-    console.error(err.stack)
-    res.status(500).send('HTTP Error 500.')
-});
+const PORT = process.env.PORT || 8000;
+console.log('+ PORT: ' + PORT);
 app.listen(PORT, function () {
     console.log('+ Listening on port: ' + PORT);
 });
+
+// -----------------------------------------------------------------------------
